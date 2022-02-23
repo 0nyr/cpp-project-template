@@ -17,10 +17,12 @@ class Example
             nbOfMessages++;
         }
 
+        int GenerateRandomNumber(int min, int max);
+
     private:
         static std::array<std::string, 18> const invictusVerses; // declaration
         int nbOfMessages = 0;
 
         std::string randomVerse();
-        int generateRandomNumber(int min, int max);
+        
 };

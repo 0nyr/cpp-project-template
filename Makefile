@@ -90,6 +90,9 @@ rr: # rebuild and rerun
 	@$(MAKE) -f $(THIS_FILE) build
 	@$(MAKE) -f $(THIS_FILE) run
 
+clear: # alias of clean
+	@$(MAKE) -f $(THIS_FILE) clean
+
 ww: # where and what
 	pwd
 	ls -alt

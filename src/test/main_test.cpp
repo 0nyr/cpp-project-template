@@ -1,16 +1,15 @@
-#include "Example_test.hpp"
+#include "example/Example_test.hpp"
 
 // define functions
-void test_Automaton();
+void test_Example()
+{
+    Example_test test;
+    test.Test_GenerateRandomNumber();
+}
 
 int main()
 {
-    test_Automaton();
+    test_Example();
     return 0;
 }
 
-void test_Automaton()
-{
-    Automaton_test automaton_test = Automaton_test();
-    automaton_test.Test_Parsing();
-}

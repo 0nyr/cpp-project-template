@@ -31,9 +31,9 @@ std::array<std::string, 18> const Example::invictusVerses = {
  * @param max Upper bound (included)
  * @return int Random generated integer.
  */
-int Example::generateRandomNumber(int min, int max)
+int Example::GenerateRandomNumber(int min, int max)
 {
-    return (rand() % (max - min)) + min;
+    return (rand() % (max - min + 1)) + min;
 }
 
 /**
@@ -46,6 +46,6 @@ std::string Example::randomVerse()
     static constexpr int maxMessagesIndex = 
         invictusVerses.size() - 1;
     std::string randomVerse = invictusVerses[
-        generateRandomNumber(0, maxMessagesIndex)];
+        GenerateRandomNumber(0, maxMessagesIndex)];
     return randomVerse;
 }
