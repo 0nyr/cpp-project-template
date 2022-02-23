@@ -1,4 +1,4 @@
-#include "Automaton_test.hpp"
+#include "Example_test.hpp"
 
 // define functions
 void test_Automaton();

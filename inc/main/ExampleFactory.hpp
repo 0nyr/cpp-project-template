@@ -7,7 +7,7 @@
 class ExampleFactory
 {
     public:
-        ExampleFactory() {};
+        ExampleFactory();
         ~ExampleFactory() {};
 
         Example * CreateExample();
