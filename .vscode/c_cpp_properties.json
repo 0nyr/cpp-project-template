@@ -6,7 +6,8 @@
                 "${workspaceFolder}/*",
                 "${workspaceFolder}/inc/*",
                 "${workspaceFolder}/inc/main/*",
-                "${workspaceFolder}/inc/test/*"
+                "${workspaceFolder}/inc/test/*",
+                "${workspaceFolder}/inc/perf/*"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
