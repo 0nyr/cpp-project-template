@@ -18,12 +18,10 @@ INC_PERF=inc/perf
 
 BINS=$(BIN_MAIN) $(BIN_TEST) $(BIN_PERF)
 
-# vars
-ECHO = @echo # @echo hides this command in terminal, not its output
-
+# compiler
 CC=g++
 GDB_DEBUGGER_FLAGS=-g
-PERSONAL_COMPIL_FLAGS=-D DEBUG -D COLORS # use own flags, see util.hpp
+PERSONAL_COMPIL_FLAGS=-D COLORS # use own flags, see utils.hpp
 CFLAGS=-I $(INC_MAIN) -march=native -O3 $(PERSONAL_COMPIL_FLAGS) $(GDB_DEBUGGER_FLAGS)
 LDLIBS=
 LDFLAGS=--ansi --pedantic -Wall --std=c++11
@@ -47,11 +45,11 @@ OBJS_MAIN_WITHOUT_MAIN=$(filter-out $(OBJ_MAIN_MAIN),$(OBJS_MAIN))
 
 default: build
 
-build: $(BIN_MAIN)
+build: dirs $(BIN_MAIN)
 
 build_test: $(BIN_TEST)
 
-all: $(BINS)
+all: dirs $(BINS)
 
 $(BIN_MAIN): $(OBJS_MAIN) # linking main
 	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
@@ -78,15 +76,15 @@ clean:
 	rm -rf bin/* obj/*
 
 run: $(BIN_MAIN)
-	$(ECHO) "$(TURQUOISE_COLOR)*** Executing main *** $(NO_COLOR)"
-	./$(BIN_MAIN)
+	@echo -e "$(TURQUOISE_COLOR)*** Executing main *** $(NO_COLOR)"
+	./$(BIN_MAIN) $(filter-out $@,$(MAKECMDGOALS))
 
 run_test: $(BIN_TEST)
-	$(ECHO) "$(TURQUOISE_COLOR)*** Executing test *** $(NO_COLOR)"
+	@echo -e "$(TURQUOISE_COLOR)*** Executing test *** $(NO_COLOR)"
 	./$(BIN_TEST)
 
 run_perf: $(BIN_PERF)
-	$(ECHO) "$(TURQUOISE_COLOR)*** Executing perf *** $(NO_COLOR)"
+	@echo -e "$(TURQUOISE_COLOR)*** Executing perf *** $(NO_COLOR)"
 	./$(BIN_PERF)
 
 valgrind:
@@ -117,5 +115,9 @@ ww: # where and what
 	ls -alt
 
 dirs:
-	mkdir -p bin/
-	mkdir -p obj/
+	@mkdir -p bin/
+	@mkdir -p obj/
+
+# Prevent make from interpreting any following arguments as targets
+%:
+	@:

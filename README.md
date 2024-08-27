@@ -14,6 +14,10 @@ If you use `VSCode`:
 
 * `ms-vscode.cpptools`: extention comming with GDB debugger integration.
 
+### NixOs flake
+
+This template supports NixOs dev environment. Update the `flake.lock` file with `nix flake update`, and enter dev environment with `nix develop`.
+
 ## Getting Started
 
 ### Use the Github template

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "utils/utils.hpp"
+
 #include <iostream>
 #include <string>
 #include <array>
@@ -12,8 +14,10 @@ class Example
 
         inline void hello()
         {
-            std::cout << "[" << nbOfMessages << "] "
-                << randomVerse() << std::endl;
+            std::string messageToPrint = 
+                "[" + std::to_string(nbOfMessages) + 
+                "]" + randomVerse();
+            CustomPrint(messageToPrint);
             nbOfMessages++;
         }
 
